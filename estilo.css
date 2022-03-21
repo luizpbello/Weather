@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,700;1,500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+
+}
+
+.container{
+    width:100%;
+
+    
+}
+
+.weather{
+    display: grid;
+    width: 300px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 0 auto;
+    padding: 10px;
+    margin-top: 130px;
+    height: 400px;
+}
+
+
+.weather-body{
+    padding:15px;
+    display: grid;
+    flex-direction: column;
+    gap:20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.weather-body-content{
+    display: flex;
+    
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+input{
+    padding:10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 14px;
+
+}
+
+h3{
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.weather-header{
+    text-align:center;
+    margin-top: 5px;
+}
+
+.date_time{
+    font-size: 20px;
+}
