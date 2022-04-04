@@ -19,7 +19,7 @@ app.get(`/`, function ( req, res ) {
 
 
 
-axios.get('http://api.weatherapi.com/v1/current.json?key=f039fca97d04493bb0c03512221803&q=Canoas&aqi=yes')
+axios.get('https://api.weatherapi.com/v1/current.json?key=f039fca97d04493bb0c03512221803&q=Canoas&aqi=yes')
   .then(function (response) {
     // manipula o sucesso da requisição
     console.log(response);
