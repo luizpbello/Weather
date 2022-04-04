@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="index.js"></script>
+    
+    <title>Bello WeatherApp</title>
+</head>
+<body>
+
+    <div class="container">
+           
+        <div class="weather">
+            <input   id="cidadeAtual" type="text" placeholder="&#xF002; Digite sua cidade..." style="font-family:Arial, FontAwesome" /> 
+            <div class="weather-header">
+            </div>
+            <div class="weather-body">
+                <div class="main-body">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <h2>
+                        <span id="city"></span>
+                        <p></p>
+                        <span id="country"></span>
+                        <p></p>
+                        <span id="region"></span>
+                    </h2>
+                </div>
+                <div class="weather-body-content">
+                    <div class="weather-body-content-temp">
+                        <h3>
+                            <span id="temp"></span>
+                            <span id="temp-unit">c</span>
+                        </h3>
+                    </div>
+                    <div class="weather-body-content-icon">
+                        <img id="icon" src="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+const api = {
+    key: " f039fca97d04493bb0c03512221803",
+    base : "https://api.weatherapi.com/v1/current.json?key="
+   
+}
+const city = document.getElementById('city')
+const country = document.getElementById('country')
+const region = document.getElementById('region')
+const temp = document.getElementById('temp')
+const icon = document.getElementById('icon')
+const search = document.getElementById('cidadeAtual')
+
+
+function getLocation() {
+    if (navigator.geolocation) {
+      let position = navigator.geolocation.getCurrentPosition(getPosition)
+
+    } else {
+        x.innerHTML = "O seu navegador não suporta Geolocalização.";
+    }
+}
+
+function getPosition(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    let url = api.base + api.key + "&q=" + lat + "," + lon;
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        
+        city.innerHTML = data.location.name;
+        country.innerHTML = data.location.country;
+        region.innerHTML = data.location.region;
+        temp.innerHTML = data.current.temp_c;
+        icon.src = data.current.condition.icon;
+        search.value = data.location.name;
+        
+
+    })
+}
+
+ search.addEventListener('keypress', enter) 
+   function enter(event) {
+       key = event.keyCode
+        if (key === 13) {
+             inputLocation()
+        }
+   }
+  
+
+
+function inputLocation() {
+    let url = api.base + api.key + "&q=" + search.value;
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        
+        city.innerHTML = data.location.name;
+        country.innerHTML = data.location.country;
+        region.innerHTML = data.location.region;
+        temp.innerHTML = data.current.temp_c;
+        icon.src = data.current.condition.icon;
+        search.value = data.location.name;
+        
+
+    })
+}
+
+function initialPosition(){
+    if (inputLocation(search.value) == undefined) {
+        search.value = "Sao Paulo";
+        inputLocation()
+    }
+}
+
+
+
+initialPosition()
+getLocation();
+        
+        
+    </script>
+
+    
+</body>
+
+</html>
