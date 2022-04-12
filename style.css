@@ -28,11 +28,21 @@ body{
     border-radius:20px;
     width: 492px;
     height: 590px;
-    margin: 0  auto;
-    background:linear-gradient(0degree ,#19335A, #8FC8EB
-    );
+    margin: 0  auto;    
     color: rgb(28, 28, 28);
 
+}
+/*RESPONSIVO*/
+@media screen and (max-width: 768px){
+    .weather-container{
+        width: 100vw;
+        height: 100vw;
+        border-radius:0px;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        color: rgb(28, 28, 28);
+    }
 }
 
 .weather-search{
@@ -198,6 +208,3 @@ input:focus{
 
 /*RESPONSIVIDADE*/
 
-@media screen {
-    
-}
