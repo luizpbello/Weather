@@ -28,20 +28,22 @@ body{
     border-radius:20px;
     width: 492px;
     height: 590px;
-    margin: 0  auto;    
+    margin: 0  auto;   
+    margin-top: 15px; 
     color: rgb(28, 28, 28);
 
 }
 /*RESPONSIVO*/
 @media screen and (max-width: 768px){
     .weather-container{
-        width: 100vw;
-        height: 100vw;
+        
         border-radius:0px;
-        width: 100%;
+        width: 95vw;
         height: 100%;
-        margin: 0;
+        margin: 0 auto;
+        margin-top: 20px;
         color: rgb(28, 28, 28);
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
     }
 }
 
