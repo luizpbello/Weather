@@ -5,6 +5,11 @@
     font-family: Poppins;
 }
 
+body{
+    justify-content: center;
+    align-items: center;
+}
+
 :root{
     --cloudy: linear-gradient(0degree ,#19335A, #8FC8EB
     );
@@ -12,12 +17,6 @@
     --rainy: linear-gradient(140degree ,#6D8C8E, #AEC8CA
     );
 }
-
-body{
-    justify-content: center;
-    align-items: center;
-}
-
 
 .weather-container{
     width: 100vh;
@@ -29,13 +28,10 @@ body{
     border-radius:20px;
     width: 492px;
     height: 590px;
-    margin: 0  auto;
-    background:linear-gradient(0degree ,#19335A, #8FC8EB
-    );
+    margin: 0  auto;    
     color: rgb(28, 28, 28);
 
 }
-
 /*RESPONSIVO*/
 @media screen and (max-width: 768px){
     .weather-container{
@@ -135,6 +131,15 @@ input:focus{
     font-weight: 300;
 }
 
+@media screen and (max-width: 768px){
+    .weather-current{
+        grid-template-columns: 1fr 2fr;
+        margin-left:0px;
+        grid-gap: 10px;
+        text-align: center;
+    }
+}
+
 .weather-forecast{
     display:flex;    
     width:500px;
@@ -145,6 +150,16 @@ input:focus{
     margin-top:10px;
     padding:5px;    
     font-weight: 300;
+}
+
+@media screen and (max-width: 768px){
+    .weather-forecast{
+        width:100%;
+        height:100%;
+        margin-top:10px;
+        padding:1px;
+        justify-content: center;
+    }
 }
 
 
@@ -194,10 +209,20 @@ input:focus{
     width: 100%;
     font-size:10px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
-    height: 180px;
-   
+    height: 180px; 
     
     
+}
+
+@media screen and (max-width: 768px){
+    .units-cards{
+        width: 80px;
+        height: 100%;
+        margin-top: 0px;
+        font-size:10px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+        
+    }
 }
 
 .cards-icons{
@@ -210,4 +235,6 @@ input:focus{
     font-weight: 300;
     font-size: 15px;
 }
+
+/*RESPONSIVIDADE*/
 
