@@ -1,65 +1,185 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">   
+    <link rel="stylesheet" href="style.css">
+    <script src="weather.js"></script>
     <script src="index.js"></script>
-    
-    <title>Bello WeatherApp</title>
+    <title>Bello Weather App</title>
 </head>
 <body>
 
-    <div class="container">
-           
-        <div class="weather">
-            <input   id="cidadeAtual" type="text" placeholder="&#xF002; Digite sua cidade..." style="font-family:Arial, FontAwesome" /> 
-            <div class="weather-header">
+    <div class="weather-app">
+        <div class="weather-container">
+            <div class="weather-search">
+                <div class="weather-inputlocation">
+                    <input   id="location" type="text" placeholder="&#xF002; Digite sua cidade..." style="font-family:Arial, FontAwesome" />             
+                </div>  
             </div>
-            <div class="weather-body">
-                <div class="main-body">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <h2>
-                        <span id="city"></span>
-                        <p></p>
-                        <span id="country"></span>
-                        <p></p>
-                        <span id="region"></span>
-                    </h2>
-                </div>
-                <div class="weather-body-content">
-                    <div class="weather-body-content-temp">
-                        <h3>
-                            <span id="temp"></span>
-                            <span id="temp-unit">c</span>
+                  
+
+            <div class="weather-icon">
+                <img id="icon" src="">
+               
+            </div>
+
+            <div class="weather-temp">
+                <h3>
+                    
+                    <span id="temp"></span>
+                    
+                    <span id="localTime"></span>
+                    
+                </h3>
+            </div>
+
+            <div class="weather-current">
+                <h3>
+                    <span>Max:<span id="temp_max">25</span></span>                
+                    <span id="temp-unit"></span>
+                </h3>
+                <h3>
+                    <span>Min:<span id="temp_min">10</span></span>                
+                    <span id="temp-unit"></span>
+
+                <h3>
+                    <span id="fore_icon"><i class="fa-solid fa-droplet"></i></span>
+                    <span id="humidity">10</span>
+                    <span>%</span>
+                </h3>
+                <h3>
+                    <span id="wind_icon"><i class="fa-solid fa-wind"></i></span>
+                    <span id="wind_speed"></span>
+                    <span>km/h</span>
+            </div>
+
+            <div class="weather-forecast">
+                <div class="weather-morning">
+                    
+                    <div class="units-cards">
+                        <h3 class="cards-tittles">Manhã</h3>
+                        <span class="cards-icons">
+                            <img id="fore_icon_morning" src="" alt=""></span>
+                        <h3>                            
+                            <span class="temp_cards" id="temp_morning"></span>
+                            <span class="temp_unity">°</span>
                         </h3>
+                        <h3>
+                            <span id="h_icon_morning"><i class="fa-solid fa-droplet"></i></span>
+                            <span id="humidity_morning">5</span>
+                            <span id="humidity_unity">%</span>
+                        </h3>
+                        <h3>
+                            <span id="wind_icon"><i class="fa-solid fa-wind"></i></span>
+                            <span id="wind_speed_morning">10</span>
+                            <span id="wind_unit_morning">km/h</span>
+                            
+                        </h3>
+                       
+
                     </div>
-                    <div class="weather-body-content-icon">
-                        <img id="icon" src="">
+                   
+                </div>
+                <div class="weather-evening">                    
+                    <div class="units-cards">
+                        <h3 class="cards-tittles">Tarde</h3>
+                        <span class="cards-icons" >
+                            <img id="fore_icon_evening" src="" alt=""></span>
+                        </span>
+                        <h3>                            
+                            <span class="temp_cards" id="temp_evening">11</span>
+                            <span class="temp_unity">°</span>
+                        </h3>
+                        <h3>
+                            <span id="humidity_icon"><i class="fa-solid fa-droplet"></i></span>
+                            <span id="humidity_evening">5</span>
+                            <span id="humidity_unity">%</span>
+                        </h3>
+                        <h3>
+                            <span id="wind_icon"><i class="fa-solid fa-wind"></i></span>
+                            <span id="wind_speed_evening">10</span>
+                            <span id="wind_unit_evening">km/h</span>
+                            
+                        </h3>
+                       
+
                     </div>
                 </div>
+                <div class="weather-night">                    
+                    <div class="units-cards">
+                        <h3 class="cards-tittles">Noite</h3>
+                        <span class="cards-icons" >
+                            <img id="fore_icon_night" src="" alt=""></span>
+
+                        </span>
+                        <h3>                            
+                            <span class="temp_cards" id="temp_night">11</span>
+                            <span class="temp_unity">°</span>
+                        </h3>
+                        <h3>
+                            <span id="humidity_icon"><i class="fa-solid fa-droplet"></i></span>
+                            <span id="humidity_night">5</span>
+                            <span id="humidity_unity">%</span>
+                        </h3>
+                        <h3>
+                            <span id="wind_icon"><i class="fa-solid fa-wind"></i></span>
+                            <span id="wind_speed_night">10</span>
+                            <span id="wind_unit_night">km/h</span>
+                            
+                        </h3>
+                       
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+    
+</body>
 
-    <script>
+<script>
+const currentLocation = document.getElementById('location');
+const weatherIcon = document.getElementById('icon');
+const temp = document.getElementById('temp');
+const temp_max = document.getElementById('temp_max');
+const temp_min = document.getElementById('temp_min');
+const humidity = document.getElementById('humidity');
+const wind_speed = document.getElementById('wind_speed');
+let localTime = document.getElementById('localTime');
 
-const api = {
+
+
+let api = {
     key: "f039fca97d04493bb0c03512221803",
     base : "https://api.weatherapi.com/v1/current.json?key="
    
 }
-const city = document.getElementById('city')
-const country = document.getElementById('country')
-const region = document.getElementById('region')
-const temp = document.getElementById('temp')
-const icon = document.getElementById('icon')
-const search = document.getElementById('cidadeAtual')
+
+let apiForecast = {
+
+    key: "f039fca97d04493bb0c03512221803",
+    base2 : "https://api.weatherapi.com/v1/forecast.json?key="
+}
+
+function fetchApi(){
+    let url = api.base + api.key + "&q=" + currentLocation.value
+    fetch(url)
+    .then(response => response.json())
+    .then(data =>{
+        
+    })
+}
+
+
+
 
 
 function getLocation() {
@@ -69,6 +189,7 @@ function getLocation() {
     } else {
         x.innerHTML = "O seu navegador não suporta Geolocalização.";
     }
+    
 }
 
 function getPosition(position) {
@@ -79,60 +200,140 @@ function getPosition(position) {
     .then(response => response.json())
     .then(data => {
         
-        city.innerHTML = data.location.name;
-        country.innerHTML = data.location.country;
-        region.innerHTML = data.location.region;
-        temp.innerHTML = data.current.temp_c;
-        icon.src = data.current.condition.icon;
-        search.value = data.location.name;
-        
+        currentLocation.value = data.location.name;
+        weatherIcon.src = data.current.condition.icon;
+        temp.innerHTML = data.current.temp_c + '°C';      
+        getForecast() 
 
     })
+
+    
 }
 
- search.addEventListener('keypress', enter) 
+
+function inputLocation() {
+    let url = api.base + api.key + "&q=" + currentLocation.value;
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {           
+            currentLocation.value = data.location.name;
+            weatherIcon.src = data.current.condition.icon;
+            temp.textContent = data.current.temp_c + "°C";            
+            const formatDateBr = new Date(data.location.localtime);
+            localTimeFormated= formatDateBr.toLocaleString();
+            localTime.textContent = localTimeFormated;
+            
+
+
+                
+            
+            
+
+            
+
+            
+           
+    })
+
+    getForecast()
+}
+
+function initialPosition(){
+    if (inputLocation(currentLocation.value) == undefined) {
+        currentLocation.value = "Sao Paulo";
+        inputLocation()
+        getForecast()
+
+    }
+}
+
+function getForecast(){
+    let url = apiForecast.base2 + api.key + "&q=" + currentLocation.value + "&days=1&aqi=no&alerts=no";
+    fetch(url)
+    .then(resp => resp.json())
+    .then(data =>{
+        let forecast = data.forecast.forecastday;
+        let morning = forecast[0].hour[9];
+        let evening = forecast[0].hour[17];
+        let night = forecast[0].hour[21];
+        temp_max.textContent = data.forecast.forecastday[0].day.maxtemp_c + "°C";
+        temp_min.textContent = data.forecast.forecastday[0].day.mintemp_c + "°C";
+        humidity.textContent = data.forecast.forecastday[0].day.avghumidity
+        wind_speed.textContent = data.forecast.forecastday[0].day.maxwind_kph
+
+        //--MORNING--//       
+        let temp_morning = document.getElementById('temp_morning');
+        let humidity_morning = document.getElementById('humidity_morning');
+        let wind_speed_morning = document.getElementById('wind_speed_morning');
+        let wind_unit_morning = document.getElementById('wind_unit_morning');
+        let fore_icon_morning = document.getElementById('fore_icon_morning');
+        let temp_unit_morning = document.getElementById('temp_unit_morning');
+
+        temp_morning.innerHTML = morning.temp_c + "°C";
+        humidity_morning.innerHTML = morning.humidity
+        wind_speed_morning.innerHTML = morning.wind_kph 
+        wind_unit_morning.innerHTML = "km/h";
+        fore_icon_morning.src = morning.condition.icon;
+       
+
+        //--EVENING--//
+        let temp_evening = document.getElementById('temp_evening');
+        let humidity_evening = document.getElementById('humidity_evening');
+        let wind_speed_evening = document.getElementById('wind_speed_evening');
+        let wind_unit_evening = document.getElementById('wind_unit_evening');
+        let fore_icon_evening = document.getElementById('fore_icon_evening');
+        let temp_unit_evening = document.getElementById('temp_unit_evening');
+
+        temp_evening.innerHTML = evening.temp_c + "°C";
+        humidity_evening.innerHTML = evening.humidity
+        wind_speed_evening.innerHTML = evening.wind_kph
+        wind_unit_evening.innerHTML = "km/h";
+        fore_icon_evening.src = evening.condition.icon;
+
+        //--NIGHT--//
+
+        let temp_night = document.getElementById('temp_night');
+        let humidity_night = document.getElementById('humidity_night');
+        let wind_speed_night = document.getElementById('wind_speed_night');
+        let wind_unit_night = document.getElementById('wind_unit_night');
+        let fore_icon_night = document.getElementById('fore_icon_night');
+        let temp_unit_night = document.getElementById('temp_unit_night');
+
+        temp_night.innerHTML = night.temp_c + "°C";
+        humidity_night.innerHTML = night.humidity
+        wind_speed_night.innerHTML = night.wind_kph
+        wind_unit_night.innerHTML = "km/h";
+        fore_icon_night.src = night.condition.icon;
+
+        
+
+            
+
+        
+    })
+
+}
+
+currentLocation.addEventListener('keypress', enter) 
    function enter(event) {
        key = event.keyCode
         if (key === 13) {
              inputLocation()
+             getForecast()
         }
    }
-  
 
-
-function inputLocation() {
-    let url = api.base + api.key + "&q=" + search.value;
-    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        
-        city.innerHTML = data.location.name;
-        country.innerHTML = data.location.country;
-        region.innerHTML = data.location.region;
-        temp.innerHTML = data.current.temp_c;
-        icon.src = data.current.condition.icon;
-        search.value = data.location.name;
-        
-
-    })
-}
-
-function initialPosition(){
-    if (inputLocation(search.value) == undefined) {
-        search.value = "Sao Paulo";
-        inputLocation()
-    }
-}
+ 
+    
 
 
 
-initialPosition()
+
+initialPosition();
 getLocation();
-        
-        
-    </script>
+getPosition();
+
 
     
-</body>
-
+</script>
 </html>
